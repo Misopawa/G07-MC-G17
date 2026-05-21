@@ -123,7 +123,7 @@ public class Encoded {
      * Contributed by: Siti Nur Amira binti Zulkiply (Member 2)
      * * @return An integer shift value between 1 and 10.
      */
-    public int generateshift() {
+    public int generateShift() {
         // 1. Retrieve the standard Java internal hash code of our group ID string
         int hash = this.groupID.hashCode(); 
         

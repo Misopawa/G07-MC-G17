@@ -161,3 +161,7 @@ public class Encoded {
                 result.append(c);
             }
         }
+        this.resultText = result.toString();
+        return this.resultText;
+    }
+}

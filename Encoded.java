@@ -123,7 +123,7 @@ public class Encoded {
      * Contributed by: Siti Nur Amira binti Zulkiply (Member 2)
      * * @return An integer shift value between 1 and 10.
      */
-    public int generateShift() {
+    public int generateshift() {
         // 1. Retrieve the standard Java internal hash code of our group ID string
         int hash = this.groupID.hashCode(); 
         
@@ -140,6 +140,10 @@ public class Encoded {
 
     // Contributed by [Rosaliny Lisa]
     public String applyCipher(String inputText, int shift) {
+        if (inputText == null) {
+            return "";
+        }
+        
        StringBuilder result = new StringBuilder(); 
        
        // Check each character one by one from start to end of string

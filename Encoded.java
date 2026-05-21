@@ -1,5 +1,6 @@
 //Contributor for Class Skeleton, Constructors, and Validation: Mohamad Nazri
 //Contributor for Encoder Cipher Algorithm: Rosaliny Lisa
+//Contributor for Character Counting & Shift Logic: Siti Nur Amira binti Zulkiply
 
 public class Encoded {
     // DATA FIELDS (Encapsulation - Private)
@@ -85,33 +86,56 @@ public class Encoded {
         return this.groupID;
     }
 
-
     // =========================================================================
-    // CODE STUBS - TO BE COMPLETED BY OTHER MEMBERS
-    // These placeholder methods allow the file to compile while keeping tasks modular.
+    // MEMBER 2 COMPONENT: CHARACTER COUNTING & SHIFT LOGIC
     // =========================================================================
 
     /**
-     * Counts non-space characters in the input string.
-     * To be implemented fully by Member 2.
-     * * @param inputText The string to count
-     * @return count of non-space characters
+     * Counts the total number of non-space characters within the user's input string.
+     * Contributed by: Siti Nur Amira binti Zulkiply (Member 2)
+     * * @param inputText The validated user input string.
+     * @return The integer count of characters that are not spaces.
      */
     public int countCharacters(String inputText) {
-        // TODO: Contributed by [Member 2]
-        // Temporary dummy return value so the class compiles
-        return 0; 
+        // Guard rail: if input is null, return 0 immediately to prevent crashes
+        if (inputText == null) {
+            return 0;
+        }
+        
+        int count = 0;
+        
+        // Loop through every character in the string sequentially
+        for (int i = 0; i < inputText.length(); i++) {
+            // Check if the current character is not a whitespace space
+            if (inputText.charAt(i) != ' ') {
+                count++; // Increment our counter
+            }
+        }
+        
+        // Save the result into the class data field and return it
+        this.charCount = count; 
+        return count;
     }
 
     /**
-     * Generates a shift constant from the hardcoded groupID hash.
-     * To be implemented fully by Member 2.
-     * * @return a shift value between 1 and 10
+     * Generates a unique, permanent base groupShift value from the hardcoded groupID.
+     * The resulting value is strictly bounded between 1 and 10.
+     * Contributed by: Siti Nur Amira binti Zulkiply (Member 2)
+     * * @return An integer shift value between 1 and 10.
      */
     public int generateShift() {
-        // TODO: Contributed by [Member 2]
-        // Temporary dummy return value so the class compiles
-        return 1;
+        // 1. Retrieve the standard Java internal hash code of our group ID string
+        int hash = this.groupID.hashCode(); 
+        
+        // 2. Apply Math.abs() because String.hashCode() can return a negative number.
+        //    We must work with absolute positive numbers for our math bounds.
+        int positiveHash = Math.abs(hash);
+        
+        // 3. Apply modulo 10 (% 10) to get a remainder range of 0 to 9.
+        //    Then, add 1 to shift that range perfectly to be between 1 and 10.
+        int groupShift = (positiveHash % 10) + 1; 
+        
+        return groupShift;
     }
 
     // Contributed by [Rosaliny Lisa]

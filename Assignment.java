@@ -25,21 +25,21 @@ public class Assignment extends JFrame {
         // Initialize the backend logic model
         encoderInstance = new Encoded();
 
-        // 1. Set Up Window Properties [cite: 49]
+        // 1. Set Up Window Properties 
         setTitle("Secure Hash-Derived Group Shift Cipher");
         setSize(550, 420);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // Center the window on screen
         setLayout(new BorderLayout(10, 10));
 
-        // 2. Create UI Components [cite: 49]
+        // 2. Create UI Components 
         // Header Text - Keeping it professional and generic to keep Group ID secure from UI 
         headerLabel = new JLabel("Custom String Encoding Application");
         headerLabel.setFont(new Font("Arial", Font.BOLD, 16));
         headerLabel.setHorizontalAlignment(SwingConstants.CENTER);
         headerLabel.setBorder(BorderFactory.createEmptyBorder(15, 10, 10, 10));
 
-        // Input Panel Components [cite: 50, 51]
+        // Input Panel Components 
         JLabel promptLabel = new JLabel("Enter text to encode (lowercase letters, numbers, spaces only):");
         inputField = new JTextField(30);
         encodeButton = new JButton("Encode Text");
@@ -103,11 +103,11 @@ public class Assignment extends JFrame {
     private void processEncoding() {
         String rawInput = inputField.getText();
 
-        // Step A: Trigger Member 1's validation handler check [cite: 23]
+        // Step A: Trigger Member 1's validation handler check 
         boolean isValid = encoderInstance.checkStringValidity(rawInput);
 
         if (!isValid) {
-            // Error Prompt Pop-up Dialog Box [cite: 18]
+            // Error Prompt Pop-up Dialog Box 
             JOptionPane.showMessageDialog(
                     this,
                     "Invalid Input detected!\n\nRules:\n1. Input cannot be blank.\n2. Uppercase letters or symbols are strictly forbidden.",
@@ -124,25 +124,25 @@ public class Assignment extends JFrame {
         // Set backend text property 
         encoderInstance.setInputText(rawInput);
 
-        // Step B: Calculate metrics using Member 2's backend logic components [cite: 26, 27]
+        // Step B: Calculate metrics using Member 2's backend logic components 
         int charCount = encoderInstance.countCharacters(rawInput);
         int baseShift = encoderInstance.generateShift(); 
         
-        // Final Shift Formula calculation: finalShift = groupShift + non-space characters [cite: 29, 30]
+        // Final Shift Formula calculation: finalShift = groupShift + non-space characters 
         int finalShift = baseShift + charCount;
 
         // Step C: Update GUI metric labels to reflect new state 
         charCountLabel.setText("Character Count (excluding spaces): " + charCount);
         finalShiftLabel.setText("Final Computed Shift (Base Shift + Char Count): " + finalShift);
 
-        // Step D: Apply Member 3's cipher algorithm transformations [cite: 31, 33, 37]
+        // Step D: Apply Member 3's cipher algorithm transformations 
         String cipherOutput = encoderInstance.applyCipher(rawInput, finalShift);
 
-        // Step E: Render output variables to the screen View [cite: 52, 53]
+        // Step E: Render output variables to the screen View 
         resultArea.setText(cipherOutput);
     }
 
-    // Main execution hook to compile and execute the interface thread [cite: 62]
+    // Main execution hook to compile and execute the interface thread 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override

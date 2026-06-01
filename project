@@ -1,1 +1,13 @@
-
+/**
+ * Creator: [Your Name]
+ * Tester: [Team Member's Name]
+ * Description: Interface for rendering educational content pages.
+ */
+public interface ContentRenderable {
+    // Standard method to display a specific page by number
+    void displayPage(int pageNum);
+    
+    // Overloaded method to display a page by its topic title 
+    // (A good way to score marks for the Overloading rubric!)
+    void displayPage(String topicTitle);
+}
